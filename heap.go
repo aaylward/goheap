@@ -1,7 +1,7 @@
 package heap
 
 func NewHeap(reversed bool) *MinHeap {
-  return &MinHeap{reversed: reversed}
+	return &MinHeap{reversed: reversed}
 }
 
 type MinHeap struct {
