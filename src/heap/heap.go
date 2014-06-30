@@ -35,7 +35,7 @@ func (h MinHeap) Peek() int {
 	return h.list[0]
 }
 
-func up (h *MinHeap, child int) {
+func up(h *MinHeap, child int) {
 	var parent int
 	for {
 		if child%2==0 {
