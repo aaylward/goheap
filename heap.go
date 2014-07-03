@@ -5,7 +5,7 @@ func NewHeap(reversed bool) *MinHeap {
 }
 
 type MinHeap struct {
-	list []int
+	list     []int
 	reversed bool
 }
 
@@ -42,10 +42,10 @@ func (h MinHeap) Peek() int {
 func up(h *MinHeap, child int) {
 	var parent int
 	for {
-		if child%2==0 {
-			parent = (child-1)/2
+		if child%2 == 0 {
+			parent = (child - 1) / 2
 		} else {
-			parent = child/2
+			parent = child / 2
 		}
 		if h.Less(child, parent) {
 			swap(h, child, parent)
@@ -81,4 +81,3 @@ func down(h *MinHeap) {
 func swap(h *MinHeap, i, j int) {
 	h.list[i], h.list[j] = h.list[j], h.list[i]
 }
-
