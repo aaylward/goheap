@@ -1,28 +1,32 @@
 package heap
 
-func NewHeap(reversed bool) *MinHeap {
-	return &MinHeap{reversed: reversed}
+func NewMinHeap() *Heap {
+	return &Heap{reversed: false}
 }
 
-type MinHeap struct {
+func NewMaxHeap() *Heap {
+	return &Heap{reversed: true}
+}
+
+type Heap struct {
 	list     []int
 	reversed bool
 }
 
-func (h *MinHeap) Less(i, j int) bool {
+func (h *Heap) Less(i, j int) bool {
 	if h.reversed {
 		return h.list[i] > h.list[j]
 	}
 	return h.list[i] < h.list[j]
 }
 
-func (h *MinHeap) Insert(x int) {
+func (h *Heap) Insert(x int) {
 	idx := h.Size()
 	h.list = append(h.list, x)
 	up(h, idx)
 }
 
-func (h *MinHeap) ExtractMin() int {
+func (h *Heap) ExtractMin() int {
 	idx := h.Size() - 1
 	swap(h, 0, idx)
 	x := h.list[idx]
@@ -31,15 +35,15 @@ func (h *MinHeap) ExtractMin() int {
 	return x
 }
 
-func (h MinHeap) Size() int {
+func (h Heap) Size() int {
 	return len(h.list)
 }
 
-func (h MinHeap) Peek() int {
+func (h Heap) Peek() int {
 	return h.list[0]
 }
 
-func up(h *MinHeap, child int) {
+func up(h *Heap, child int) {
 	var parent int
 	for {
 		if child%2 == 0 {
@@ -56,7 +60,7 @@ func up(h *MinHeap, child int) {
 	}
 }
 
-func down(h *MinHeap) {
+func down(h *Heap) {
 	var n int
 	for {
 		left := 2*n + 1
@@ -78,6 +82,6 @@ func down(h *MinHeap) {
 	}
 }
 
-func swap(h *MinHeap, i, j int) {
+func swap(h *Heap, i, j int) {
 	h.list[i], h.list[j] = h.list[j], h.list[i]
 }
