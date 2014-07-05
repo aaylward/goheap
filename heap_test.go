@@ -5,6 +5,17 @@ import (
 	"testing"
 )
 
+func Test_ExtractMinEmpty(t *testing.T) {
+	minHeap := heap.NewMinHeap()
+	_, err := minHeap.ExtractMin()
+
+	if err == nil {
+		t.Error("heap.ExtractMin should return an error on empty heaps!")
+	} else {
+		t.Log("Woo! Error returned.")
+	}
+}
+
 func Test_InsertToHeap(t *testing.T) {
 	minHeap := heap.NewMinHeap()
 	minHeap.Insert(5)
@@ -28,7 +39,9 @@ func Test_ExtractMin(t *testing.T) {
 		t.Error("Heap is the wrong size!")
 	}
 
-	if minHeap.ExtractMin() != -3 {
+	min, err := minHeap.ExtractMin()
+
+	if min != -3 || err != nil {
 		t.Error("Failed to ExtractMin!")
 	}
 
@@ -72,7 +85,8 @@ func Test_ExtractMinReversed(t *testing.T) {
 		t.Error("Heap is the wrong size!")
 	}
 
-	if maxHeap.ExtractMin() != 12 {
+	min, err := maxHeap.ExtractMin()
+	if min != 12 || err != nil {
 		t.Error("Failed to ExtractMin!")
 	}
 
