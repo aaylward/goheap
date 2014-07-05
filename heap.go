@@ -1,5 +1,7 @@
 package heap
 
+import "fmt"
+
 func NewMinHeap() *Heap {
 	return &Heap{reversed: false}
 }
@@ -26,13 +28,17 @@ func (h *Heap) Insert(x int) {
 	up(h, idx)
 }
 
-func (h *Heap) ExtractMin() int {
+func (h *Heap) ExtractMin() (int, error) {
+  if h.Size() < 1 {
+    return 0, fmt.Errorf("Cannot ExtractMin from an empty heap.")
+  }
+
 	idx := h.Size() - 1
 	swap(h, 0, idx)
 	x := h.list[idx]
 	h.list = h.list[:idx]
 	down(h)
-	return x
+	return x, nil
 }
 
 func (h Heap) Size() int {
