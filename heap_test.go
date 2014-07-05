@@ -41,7 +41,7 @@ func Test_ExtractMin(t *testing.T) {
 
 	min, err := minHeap.ExtractMin()
 
-	if min != -3 && err != nil {
+	if min != -3 || err != nil {
 		t.Error("Failed to ExtractMin!")
 	}
 
@@ -86,7 +86,7 @@ func Test_ExtractMinReversed(t *testing.T) {
 	}
 
 	min, err := maxHeap.ExtractMin()
-	if min != 12 && err != nil {
+	if min != 12 || err != nil {
 		t.Error("Failed to ExtractMin!")
 	}
 
