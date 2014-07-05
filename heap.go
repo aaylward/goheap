@@ -29,9 +29,9 @@ func (h *Heap) Insert(x int) {
 }
 
 func (h *Heap) ExtractMin() (int, error) {
-  if h.Size() < 1 {
-    return 0, fmt.Errorf("Cannot ExtractMin from an empty heap.")
-  }
+	if h.Size() < 1 {
+		return 0, fmt.Errorf("Cannot ExtractMin from an empty heap.")
+	}
 
 	idx := h.Size() - 1
 	swap(h, 0, idx)
