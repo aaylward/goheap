@@ -1,4 +1,4 @@
 goheap
 ======
 
-it's a heap of fun!
+it's a heap (of ints) of fun!
